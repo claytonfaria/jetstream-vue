@@ -301,7 +301,7 @@ function logout() {
         <!--        </header> -->
 
         <!-- Page Content -->
-        <main class="overflow-auto">
+        <main class="overflow-y-auto overscroll-y-contain">
           <slot />
         </main>
       </div>
