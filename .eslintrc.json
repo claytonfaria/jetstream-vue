@@ -1,0 +1,14 @@
+{
+  "extends": "@antfu",
+  "overrides": [
+    {
+      "files": ["*.vue"],
+      "parserOptions": {
+        "parser": "espree"
+      }
+    }
+  ],
+  "rules": {
+    "@typescript-eslint/semi": ["warn", "always"]
+  }
+}
