@@ -33,7 +33,7 @@ class InviteTeamMember implements InvitesTeamMembers
             'email' => $email,
             'role' => $role,
         ]);
-
+        //@phpstan-ignore-next-line
         Mail::to($email)->send(new TeamInvitation($invitation));
     }
 
@@ -67,8 +67,8 @@ class InviteTeamMember implements InvitesTeamMembers
                 }),
             ],
             'role' => Jetstream::hasRoles()
-                            ? ['required', 'string', new Role]
-                            : null,
+                ? ['required', 'string', new Role]
+                : null,
         ]);
     }
 

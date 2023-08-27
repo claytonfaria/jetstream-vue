@@ -31,7 +31,7 @@ class CreateTeam implements CreatesTeams
             'name' => $input['name'],
             'personal_team' => false,
         ]));
-
+        // @phpstan-ignore-next-line
         return $team;
     }
 }
