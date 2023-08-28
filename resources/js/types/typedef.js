@@ -20,6 +20,8 @@
  * @property {Nullable<DateTime>} email_verified_at
  * @property {DateTime} created_at
  * @property {DateTime} updated_at
+ * @property {Team[]} all_teams
+ * @property {Team} current_team
  */
 
 /**
@@ -36,4 +38,15 @@
  * @property {boolean} hasTermsAndPrivacyPolicyFeature - Show the existence of terms and privacy policy features.
  * @property {boolean} managesProfilePhotos - Provides information about the possibility to manage profile photos.
  * @property {boolean} hasEmailVerification - Specifies the availability of the email verification feature.
+ */
+
+/**
+ * An object that represents a team.
+ * @typedef {Object} Team
+ * @property {number} id - The unique ID of the team.
+ * @property {number} user_id - The ID of the user the team belongs to.
+ * @property {string} name - The name of the team.
+ * @property {boolean} personal_team - Indicates if it's a personal team.
+ * @property {string} created_at - The timestamp when the team was created.
+ * @property {string} updated_at - The timestamp when the team was last updated.
  */
