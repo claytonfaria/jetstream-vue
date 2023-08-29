@@ -6,6 +6,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@tanstack/vue-table": "^8.9.3",
     "@vueuse/core": "^10.4.0",
     "ziggy-js": "^1.6.2"
   },

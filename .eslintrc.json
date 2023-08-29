@@ -4,7 +4,8 @@
     {
       "files": ["*.vue"],
       "parserOptions": {
-        "parser": "espree"
+        "parser": "espree",
+        "ecmaVersion": 2022
       }
     }
   ],

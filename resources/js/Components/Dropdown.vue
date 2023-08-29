@@ -18,6 +18,10 @@ const props = defineProps({
 
 const open = ref(false);
 
+defineExpose({
+  open,
+});
+
 function closeOnEscape(e) {
   if (open.value && e.key === 'Escape')
     open.value = false;

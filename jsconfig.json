@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ESNext",
     "moduleResolution": "nodeNext",
     "checkJs": true,
     "baseUrl": ".",
