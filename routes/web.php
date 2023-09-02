@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Person;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,35 +32,8 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function (Request $request) {
 
-        $validated = $request->validate([
-            'sort' => 'in:age,name,email,visits',
-            'direction' => 'in:asc,desc',
-            'page_size' => 'integer|min:1|max:100',
-        ]);
-
-        $sortBy = $validated['sort'] ?? 'age';
-        $sortDirection = $validated['direction'] ?? 'asc';
-
-        $page_size = $validated['page_size'] ?? 10;
-
         return Inertia::render('Dashboard', [
-            'person' => Person::orderBy($sortBy, $sortDirection)
-                ->paginate($page_size)
-                ->withQueryString(),
-            'params' => $validated,
         ]);
     })->name('dashboard');
-
-    Route::post('/person', function (Request $request) {
-
-        $validated = $request->validate([
-            'name' => 'required|string|max:255|min:3',
-        ]);
-
-        $name = $validated['name'];
-        return redirect()->route('dashboard')->dangerBanner(
-            "Hello $name, welcome to the dashboard! You have been logged in. Please fill out the form below."
-        );
-    })->name('person.store');
 
 });

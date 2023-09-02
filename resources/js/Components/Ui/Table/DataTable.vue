@@ -1,6 +1,5 @@
 <script setup>
 import { FlexRender, getCoreRowModel, useVueTable } from '@tanstack/vue-table';
-import Pagination from '@/Components/Ui/Table/Pagination.vue';
 import DataTableViewOptions from '@/Components/Ui/Table/DataTableViewOptions.vue';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/Components/Ui/Table/index.js';
 
@@ -21,15 +20,15 @@ const props = defineProps({
 
 const table = useVueTable({
   get data() {
-    return props.data.data;
+    return props.data;
   },
   columns: props.columns,
   getCoreRowModel: getCoreRowModel(),
-  state: {
-    get sorting() {
-      return props.sorting;
-    },
-  },
+  // state: {
+  //   get sorting() {
+  //     return props.sorting;
+  //   },
+  // },
 });
 </script>
 
@@ -71,6 +70,6 @@ const table = useVueTable({
         </TableBody>
       </Table>
     </div>
-    <Pagination :links="props.data.links" />
+    <!--    <Pagination :links="props.data.links" /> -->
   </div>
 </template>
