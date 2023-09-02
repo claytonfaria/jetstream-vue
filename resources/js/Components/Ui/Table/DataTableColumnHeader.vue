@@ -1,6 +1,7 @@
 <script setup>
 import { Icon } from '@iconify/vue';
 import { computed, ref } from 'vue';
+import { router } from '@inertiajs/vue3';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 
@@ -30,6 +31,19 @@ const currentIcon = computed(() => {
       return 'lucide:chevrons-up-down';
   }
 });
+
+function sortColumn(direction) {
+  router.get('/dashboard',
+    {
+      sort: props.column.id,
+      direction,
+    },
+    {
+      preserveState: true,
+      preserveScroll: true,
+    },
+  );
+}
 </script>
 
 <template>
@@ -41,13 +55,13 @@ const currentIcon = computed(() => {
       </button>
     </template>
     <template #content>
-      <DropdownLink as="button" @click="column.toggleSorting(false)">
+      <DropdownLink as="button" @click="sortColumn('asc')">
         <div class="flex items-center gap-x-2">
           <Icon icon="lucide:sort-asc" class="w-4 h-4" />
           Asc
         </div>
       </DropdownLink>
-      <DropdownLink as="button" @click="column.toggleSorting(true)">
+      <DropdownLink as="button" @click="sortColumn('desc')">
         <div class="flex items-center gap-x-2">
           <Icon icon="lucide:sort-desc" class="w-4 h-4" />
           Desc
