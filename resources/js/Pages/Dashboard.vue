@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { usePage } from '@inertiajs/vue3';
 import { createColumnHelper } from '@tanstack/vue-table';
+import { loadLanguageAsync, trans } from 'laravel-vue-i18n';
 import type { ComputedRef } from 'vue';
 import { computed, h } from 'vue';
-import { loadLanguageAsync } from 'laravel-vue-i18n';
-import DataTable from '@/Components/Ui/Table/DataTable.vue';
 import type { Jetstream, User } from '@/types';
-import DataTableColumnHeader from '@/Components/Ui/Table/DataTableColumnHeader.vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
+import DataTableColumnHeader from '@/Components/Ui/Table/DataTableColumnHeader.vue';
+import DataTable from '@/Components/Ui/Table/DataTable.vue';
 
 const page = usePage();
 
@@ -84,7 +84,7 @@ const columns = [
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-8">
-          Hello  {{ user.name }} {{ $t("Welcome to your Jetstream application!") }} {{ $t("auth.failed") }} {{ $t("Get started in your development.") }}
+          Hello  {{ user.name }} {{ $t("Get started in your development.") }} {{ trans("auth.failed") }} {{ $t("Get started in your development.") }}
           <div class="mt-10 space-x-4">
             change on FE
             <button class="bg-red-300" @click="loadLanguageAsync('pt_BR')">

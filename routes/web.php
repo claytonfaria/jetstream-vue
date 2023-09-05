@@ -32,7 +32,8 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard/{locale?}', function (Request $request, string $locale) {
 
-        App::setLocale($locale);
+
+        App::setLocale($request->getPreferredLanguage(['en', 'pt_BR']));
         return Inertia::render('Dashboard', [
             'locale' => $locale,
         ]);
