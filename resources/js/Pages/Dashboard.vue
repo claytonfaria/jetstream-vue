@@ -3,6 +3,7 @@ import { usePage } from '@inertiajs/vue3';
 import { createColumnHelper } from '@tanstack/vue-table';
 import type { ComputedRef } from 'vue';
 import { computed, h } from 'vue';
+import { loadLanguageAsync } from 'laravel-vue-i18n';
 import DataTable from '@/Components/Ui/Table/DataTable.vue';
 import type { Jetstream, User } from '@/types';
 import DataTableColumnHeader from '@/Components/Ui/Table/DataTableColumnHeader.vue';
@@ -83,7 +84,26 @@ const columns = [
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-8">
-          Hello  {{ user.name }}
+          Hello  {{ user.name }} {{ $t("Welcome to your Jetstream application!") }} {{ $t("auth.failed") }} {{ $t("Get started in your development.") }}
+          <div class="mt-10 space-x-4">
+            change on FE
+            <button class="bg-red-300" @click="loadLanguageAsync('pt_BR')">
+              Change to Portuguese Language
+            </button>
+            <button class="bg-blue-300" @click="loadLanguageAsync('en')">
+              Change to English Language
+            </button>
+          </div>
+
+          <div class="mt-10 space-x-4">
+            change on Laravel side
+            <a class="bg-red-300" href="/dashboard/pt_BR">
+              Change to Portuguese Language
+            </a>
+            <a class="bg-blue-300" href="/dashboard/en">
+              Change to English Language
+            </a>
+          </div>
           <DataTable :columns="columns" :data="people" />
         </div>
       </div>

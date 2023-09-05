@@ -30,9 +30,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function (Request $request) {
+    Route::get('/dashboard/{locale?}', function (Request $request, string $locale) {
 
+        App::setLocale($locale);
         return Inertia::render('Dashboard', [
+            'locale' => $locale,
         ]);
     })->name('dashboard');
 
