@@ -30,12 +30,12 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard/{locale?}', function (Request $request, string $locale) {
+    Route::get('/dashboard', function (Request $request) {
 
-
+//        $availableLocales = config('app.available_locales');
         App::setLocale($request->getPreferredLanguage(['en', 'pt_BR']));
         return Inertia::render('Dashboard', [
-            'locale' => $locale,
+//            'locale' => $locale,
         ]);
     })->name('dashboard');
 
