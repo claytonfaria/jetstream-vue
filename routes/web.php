@@ -32,10 +32,18 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', function (Request $request) {
 
-//        $availableLocales = config('app.available_locales');
-        App::setLocale($request->getPreferredLanguage(['en', 'pt_BR']));
+        $availableLocales = config('app.available_locales');
+
+        $locale = $request->getPreferredLanguage($availableLocales);
+
+        if (! in_array($locale, $availableLocales)) {
+            $locale = config('app.fallback_locale');
+        }
+
+        app()->setLocale($locale);
+
         return Inertia::render('Dashboard', [
-//            'locale' => $locale,
+            //            'locale' => $locale,
         ]);
     })->name('dashboard');
 
