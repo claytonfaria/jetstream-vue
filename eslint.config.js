@@ -5,7 +5,7 @@ export default antfu({
 
 }, {
   rules: {
-    'ts/semi': ['warn', 'always'],
+    'style/semi': ['warn', 'always'],
   },
 
 });
